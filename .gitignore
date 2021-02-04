@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 *.yml
-*/prepare_sitemap.py
+examples/recipe_sender/prepare_sitemap.py
