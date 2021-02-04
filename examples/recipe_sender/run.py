@@ -7,11 +7,16 @@ from bs4 import BeautifulSoup
 import yaml
 import os
 
-
+#git the directory of the current file
 filedir = os.path.dirname(__file__)
+
+#get credentials for the email server
 email_cred = yaml.load(open(os.path.join(filedir,'email_credentials.yml'), 'r'), Loader=yaml.BaseLoader)
+
+#get the list of recipients
 recipients = open(os.path.join(filedir,'recipients.txt'), 'r').readlines()
 
+#modify stylesheet for email
 style_sheet = '''
 <style>
 .text-right{
@@ -28,12 +33,20 @@ th{
 '''
 
 def get_random_recipe():
+    '''
+    returns the url to a random recipe
+    :return:
+    '''
     recipes = open(os.path.join(filedir, "recipes.txt")).readlines()
     n_rec = len(recipes)
     random_index = np.random.randint(0,n_rec,1)[0]
     return recipes[random_index]
 
 def get_random_recipe_full():
+    '''
+    returns url, the ingredients, the description and the title of a random recipe
+    :return:
+    '''
     url = get_random_recipe()[:-2]
     html_content = requests.get(url).text
     soup = BeautifulSoup(html_content, "lxml")
@@ -51,6 +64,7 @@ def get_random_recipe_full():
 
 def gen_mail_content(url, target_mail, ingredients, description, title):
     '''
+    returns an MIMEMultipart msg obj for an email
     :param url: url to recipe
     :param target_mail: email recipient
     :return:
@@ -65,6 +79,7 @@ def gen_mail_content(url, target_mail, ingredients, description, title):
 
 def send_mails(url, contacts, ingredients, description, title):
     '''
+    sends the email to all recipients in the list "contacts". 
     :param url: url to recipe
     :param contacts: list of recipients email addresses
     :return:

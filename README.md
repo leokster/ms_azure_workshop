@@ -8,7 +8,7 @@ a service an a Microsoft Azure virtual machine.
 ### Manuals
 - [How to create a virtual machine in Azure](manuals/creating_virtual_machine.md)
 - [How to connect to a virtual machine](manuals/connect_to_vm.md)
-- [How to setup Python an a VM](manuals/setup_anaconda_python.md)
+- [How to setup Python on a VM](manuals/setup_anaconda_python.md)
 - [How to to mount an Azure blob storage](manuals/mount_blob_storage.md)
 - How to connect your IDE with the virtual Machine:
     - [PyCharm](manuals/setup_pycharm_ssh.md)
