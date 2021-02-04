@@ -1,6 +1,5 @@
 import smtplib
 import numpy as np
-
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import requests
@@ -8,10 +7,10 @@ from bs4 import BeautifulSoup
 import yaml
 import os
 
-TO_EMAIL = "info@timrohner.ch"
 
 filedir = os.path.dirname(__file__)
 email_cred = yaml.load(open(os.path.join(filedir,'email_credentials.yml'), 'r'), Loader=yaml.BaseLoader)
+recipients = open(os.path.join(filedir,'recipients.txt'), 'r').readlines()
 
 style_sheet = '''
 <style>
@@ -67,11 +66,10 @@ def gen_mail_content(url, target_mail, ingredients, description, title):
 def send_mails(url, contacts, ingredients, description, title):
     '''
     :param url: url to recipe
-    :param contacts: whitespace separated list of recipients email addresses
+    :param contacts: list of recipients email addresses
     :return:
     '''
 
-    contacts = contacts.split()
     msgs = [gen_mail_content(url, cont, ingredients, description, title) for cont in contacts]
     s = smtplib.SMTP(email_cred.get("server"))
     s.login(email_cred.get("user"), email_cred.get("pw"))
@@ -80,6 +78,7 @@ def send_mails(url, contacts, ingredients, description, title):
     s.quit()
 
 if __name__ == "__main__":
+    recipients = open(os.path.join(filedir, "recipients.txt"), "r").readlines()
     url, ingredients, description, title = get_random_recipe_full()
-    send_mails(url=url, contacts=TO_EMAIL, ingredients= ingredients, description=description, title=title)
+    send_mails(url=url, contacts=recipients, ingredients= ingredients, description=description, title=title)
 
