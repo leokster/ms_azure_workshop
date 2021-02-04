@@ -5,7 +5,7 @@ Follow these steps to make it work.
 
 1. Clone the repo to your VM
     ```
-   git clone https://github.com/leokster/ms_azure_workshop.git
+   git clone ssh://git@git.jetbrains.space/swissgrid/microsoft-azure-workshop/ms_azure_workshop.git
     ```
 1. Navigate to the recipe-project folder 
     ```

@@ -42,8 +42,12 @@ Create a config file for the connection
 ```
 sudo touch /etc/fuse_connection_raw.cfg
 ```
+Edit the fuse_connect file
+```
+sudo nano /etc/fuse_connection_raw.cfg
+```
 
-Add the following content to the files
+Add the following content to the file
 
 ```
 accountName <your_storage_account_name>

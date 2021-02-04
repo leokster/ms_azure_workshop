@@ -79,7 +79,7 @@ def gen_mail_content(url, target_mail, ingredients, description, title):
 
 def send_mails(url, contacts, ingredients, description, title):
     '''
-    sends the email to all recipients in the list "contacts". 
+    sends the email to all recipients in the list "contacts".
     :param url: url to recipe
     :param contacts: list of recipients email addresses
     :return:
