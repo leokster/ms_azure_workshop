@@ -20,14 +20,21 @@ skip this step)
     ```
     pip install -r requirements.txt
     ```
-1. Create a file `email_credentials.yml` with the following content.
+1. Create a file `email_credentials.yml` 
+    ```
+   touch email_credentials.yml
+    ```
+1. Edit the file by running ``nano email_credentials.yml`` and type in the following
     ```
     user: <email-address>
     pw: <email-password>
     server: <smtp-server>
     ```
-1. Modify the recipes.txt file and add for every recipient email address
+1. Modify the recipients.txt file and add for every recipient one email address
 per line.
+    ```
+    nano recipients.txt
+    ```
 1. Run the script.
     ```
    python run.py    
